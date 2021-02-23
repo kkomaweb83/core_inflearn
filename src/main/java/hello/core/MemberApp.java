@@ -25,6 +25,7 @@ public class MemberApp {
 		System.out.println("999");
 		System.out.println("888");
 		System.out.println("777");
+		System.out.println("555");
 		
 		Order order = orderService.createOrder(memberId, "itemA", 10000);
 		
