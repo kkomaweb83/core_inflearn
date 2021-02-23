@@ -24,6 +24,7 @@ public class MemberApp {
 		System.out.println("find member = " + findMember.getName());
 		System.out.println("999");
 		System.out.println("888");
+		System.out.println("777");
 		
 		Order order = orderService.createOrder(memberId, "itemA", 10000);
 		
