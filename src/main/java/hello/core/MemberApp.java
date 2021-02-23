@@ -23,6 +23,7 @@ public class MemberApp {
 		System.out.println("new member = " + member.getName());
 		System.out.println("find member = " + findMember.getName());
 		System.out.println("999");
+		System.out.println("888");
 		
 		Order order = orderService.createOrder(memberId, "itemA", 10000);
 		
