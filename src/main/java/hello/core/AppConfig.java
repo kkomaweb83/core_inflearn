@@ -1,5 +1,8 @@
 package hello.core;
 
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
 import hello.core.discount.DiscountPolicy;
 import hello.core.discount.RateDiscountPolicy;
 import hello.core.member.MemberRepository;
@@ -9,6 +12,7 @@ import hello.core.member.MemoryMemberRepository;
 import hello.core.order.OrderService;
 import hello.core.order.OrderServiceImpl;
 
+@Configuration
 public class AppConfig {
 	// 관심사 분리
 	// 애플리케이션의 전체 동작 방식을 구성(config)하기 위해, 
@@ -25,21 +29,25 @@ public class AppConfig {
 
 	
 	// 회원서비스 생성
+	@Bean
 	public MemberService memberService( ) {
 		return new MemberServiceImpl(memberRepository());
 	}
 	
 	// 주문서비스 생성
+	@Bean
 	public OrderService orderService( ) {
 		return new OrderServiceImpl(memberRepository(), discountPolicy());
 	}
 	
 	// 리팩터링 - 중복코드 제거
+	@Bean
 	public MemberRepository memberRepository() {
 		return new MemoryMemberRepository();
 	}
 	
 	// 리팩터링 - 역할에 따른 구현이 보이도록
+	@Bean
 	public DiscountPolicy discountPolicy() {
 		return new RateDiscountPolicy();
 	}
