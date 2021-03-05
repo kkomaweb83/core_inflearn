@@ -1,7 +1,5 @@
 package hello.core.beanfind;
 
-import java.util.Iterator;
-
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.config.BeanDefinition;
