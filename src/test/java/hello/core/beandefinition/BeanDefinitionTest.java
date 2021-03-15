@@ -1,4 +1,4 @@
-package hello.core.beanfind;
+package hello.core.beandefinition;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -7,31 +7,20 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 
 import hello.core.AppConfig;
 
-public class ApplicationContextInfoTest {
+public class BeanDefinitionTest {
 	
 	AnnotationConfigApplicationContext ac = new AnnotationConfigApplicationContext(AppConfig.class);
 	
 	@Test
-	@DisplayName("모든 빈 출력하기")
-	void findAllBean( ) {
-		String[] beanDefinitionNames = ac.getBeanDefinitionNames();
-		for (String beanDefinitionName : beanDefinitionNames) {
-			Object bean = ac.getBean(beanDefinitionName);
-			System.out.println("name = " + beanDefinitionName + " object = " + bean);
-		}
-	}
-	
-	@Test
-	@DisplayName("애플리케이션 빈 출력하기")
-	void findApplicationBean( ) {
+	@DisplayName("빈 설정 메타정보 확인")
+	void findApplicationBean() {
 		String[] beanDefinitionNames = ac.getBeanDefinitionNames();
 		for (String beanDefinitionName : beanDefinitionNames) {
 			BeanDefinition beanDefinition = ac.getBeanDefinition(beanDefinitionName);
+			
 			if(beanDefinition.getRole() == BeanDefinition.ROLE_APPLICATION) {
-				Object bean = ac.getBean(beanDefinitionName);
-				System.out.println("name2 = " + beanDefinitionName + " object2 = " + bean);
+				System.out.println("beanDefinitionName = " + beanDefinitionName + " beanDefinition = " + beanDefinition);
 			}
 		}
 	}
-
 }
